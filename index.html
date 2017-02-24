@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>SHA-1 collision</title>
+<link rel="stylesheet" type="text/css" media="screen" href="default.css" />
+<script type="text/javascript" src="collider.js"></script>
+</head>
+
+<body>
+
+<h1>SHA-1 collision</h1>
+
+<p>The full collision is a result of two subsequent collisions in the compression function. The first collision brings the hash function's internal state slightly out of sync, while the second collision brings them back into sync.</p>
+
+<p>An interesting thing to note is that although the messages of the first and second collisions are different, the difference pattern between them is the same.</p>
+
+<p>Legend:
+<ul>
+<li>grey: message block. Each bit is taken directly from the PDF files.</li>
+<li>red: message schedule. Each bit is an XOR over the bits from the message block.</li>
+<li>yellow: internal state. Each word is computed as a function of the previous 5 state words and the corresponding word from the message/message schedule.</li>
+<li>green: intermediate hash value. This is a sum of the initial vector and each block.</li>
+</ul>
+</p>
+
+<h2>First message block collision</h2>
+<table>
+
+<tr>
+<th></th>
+<th>good.pdf</th>
+<th>bad.pdf</th>
+<th>difference</th>
+<th></th>
+<th>good.pdf</th>
+<th>bad.pdf</th>
+<th>difference</th>
+</tr>
+
+<tr>
+<th>message</th>
+<td><img src="good-m0.png" /></td>
+<td><img src="bad-m0.png" /></td>
+<td><img src="xor-m0.png" /></td>
+<th rowspan="2">state</th>
+<td rowspan="2"><img src="good-m0_a.png" /></td>
+<td rowspan="2"><img src="bad-m0_a.png" /></td>
+<td rowspan="2"><img src="xor-m0_a.png" /></td>
+</tr>
+
+<tr>
+<th>schedule</th>
+<td><img src="good-m0_w.png" /></td>
+<td><img src="bad-m0_w.png" /></td>
+<td><img src="xor-m0_w.png" /></td>
+</tr>
+
+<tr>
+<td></td>
+<td colspan="3"></td>
+<th>hash</th>
+<td><img src="good-m0_h.png" /></td>
+<td><img src="bad-m0_h.png" /></td>
+<td><img src="xor-m0_h.png" /></td>
+</tr>
+
+</table>
+
+<h2>Second message block collision</h2>
+<table>
+
+<tr>
+<th></th>
+<th>good.pdf</th>
+<th>bad.pdf</th>
+<th>difference</th>
+<th></th>
+<th>good.pdf</th>
+<th>bad.pdf</th>
+<th>difference</th>
+</tr>
+
+<tr>
+<th>message</th>
+<td><img src="good-m1.png" /></td>
+<td><img src="bad-m1.png" /></td>
+<td><img src="xor-m1.png" /></td>
+<th rowspan="2">state</th>
+<td rowspan="2"><img src="good-m1_a.png" /></td>
+<td rowspan="2"><img src="bad-m1_a.png" /></td>
+<td rowspan="2"><img src="xor-m1_a.png" /></td>
+</tr>
+
+<tr>
+<th>schedule</th>
+<td><img src="good-m1_w.png" /></td>
+<td><img src="bad-m1_w.png" /></td>
+<td><img src="xor-m1_w.png" /></td>
+</tr>
+
+<tr>
+<td></td>
+<td colspan="3"></td>
+<th>hash</th>
+<td><img src="good-m1_h.png" /></td>
+<td><img src="bad-m1_h.png" /></td>
+<td><img src="xor-m1_h.png" /></td>
+</tr>
+
+</table>
+
+</body>
+</html>
