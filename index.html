@@ -11,9 +11,9 @@
 
 <h1>SHA-1 collision</h1>
 
-<p>The full collision is a result of two subsequent collisions in the compression function. The first collision brings the hash function's internal state slightly out of sync, while the second collision brings them back into sync.</p>
+<p>The full collision is a result of two subsequent manipulations of the compression function. The first manipulation brings the hash function's internal state only slightly out of sync, while the second manipulation (which is the actual collision) brings them back into sync.</p>
 
-<p>An interesting thing to note is that although the messages of the first and second collisions are different, the difference pattern between them is the same.</p>
+<p>An interesting thing to note is that although the messages of the first and second blocks are different, the difference pattern between them is the same.</p>
 
 <p>Legend:
 <ul>
@@ -24,7 +24,7 @@
 </ul>
 </p>
 
-<h2>First message block collision</h2>
+<h2>First message block</h2>
 <table>
 
 <tr>
@@ -67,7 +67,7 @@
 
 </table>
 
-<h2>Second message block collision</h2>
+<h2>Second message block (collision)</h2>
 <table>
 
 <tr>
